@@ -30,6 +30,15 @@ final class FactoryViewController: UIViewController {
 
     // лейбл с размахом крыла самолета
     private let wingsLenghtLabel = UILabel()
+
+	/// вьюшка для хранения uml
+	private var imageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		let image = UIImage(named: "Factory")
+		imageView.image = image
+		return imageView
+	}()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +59,16 @@ final class FactoryViewController: UIViewController {
         picker.delegate = self
         picker.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(picker)
+		view.addSubview(imageView)
 
         NSLayoutConstraint.activate([
             picker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             picker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            picker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            picker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+			imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			imageView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 
