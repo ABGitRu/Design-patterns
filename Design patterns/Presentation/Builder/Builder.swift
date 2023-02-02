@@ -45,7 +45,7 @@ protocol PlayerBuilder {
 final class PlayerOne: PlayerBuilder {
 
     /// обьект игрока который можно собрать
-    var player = Player()
+    private var player = Player()
 
     func reset() {
         player = Player()

@@ -79,6 +79,15 @@ final class BuilderViewController: UIViewController {
         return button
     }()
 
+	/// вью с отображением диаграммы
+	var imageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		let image = UIImage(named: "Builder")
+		imageView.image = image
+		return imageView
+	}()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -92,12 +101,19 @@ final class BuilderViewController: UIViewController {
         navigationController?.navigationBar.tintColor = settings.navigationTintColor
 
         view.addSubview(createPlayerButton)
+		view.addSubview(imageView)
 
         NSLayoutConstraint.activate([
             createPlayerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             createPlayerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             createPlayerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             createPlayerButton.heightAnchor.constraint(equalToConstant: 48),
+
+			imageView.heightAnchor.constraint(equalToConstant: 300),
+			imageView.widthAnchor.constraint(equalToConstant: view.frame.width),
+			imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			imageView.bottomAnchor.constraint(equalTo: createPlayerButton.topAnchor,
+											  constant: -36)
         ])
     }
 
